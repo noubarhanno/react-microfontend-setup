@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import QuickBooking from "../QuickBooking/QuickBooking.jsx";
 import "./HomeContent.scss";
+// importing from the home page web pack exposed name / the name of the component
+// from the react components app exposed components , get the name of a specific component you want to use
+const MovieCard = React.lazy(() => import("components/MovieCard"));
 
 const dummyItem = [{ name: "Dummy Movie" }];
 
@@ -27,7 +30,9 @@ const HomeContent = (props) => {
       return (
         <div onClick={() => movieClicked(item)} key={item.name}>
           <div>Load the cards Here</div>
-          {/* Load the Movie Card Here */}
+          <Suspense fallback={null}>
+            <MovieCard></MovieCard>
+          </Suspense>
         </div>
       );
     });
