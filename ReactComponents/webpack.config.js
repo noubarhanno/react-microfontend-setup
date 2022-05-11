@@ -26,6 +26,7 @@ module.exports = {
       exposes: {
         "./MovieCard": "./src/components/MovieCard/MovieCard.jsx",
         "./BuyButton": "./src/components/Button/BuyButton/BuyButton.jsx",
+        "./Typography": "./src/components/Typography/Typography.jsx",
       },
     }),
     new MiniCssExtractPlugin(),
