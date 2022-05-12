@@ -76,6 +76,8 @@ module.exports = {
       remotes: {
         // fetch the home exposes from the home app remote entry js
         homeapp: "home@http://localhost:3000/remoteEntry.js",
+        detailsapp: "details@http://localhost:3001/remoteEntry.js",
+        seatapp: "seat@http://localhost:3003/remoteEntry.js",
       },
       // same approach in the consumer and the exposer
       shared: ["react", "react-dom"],
