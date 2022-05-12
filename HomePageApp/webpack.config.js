@@ -22,11 +22,17 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "home",
       filename: "remoteEntry.js",
+      exposes: {
+        "./HomePage": "./src/components/HomeContent/HomeContent.jsx",
+      },
       remotes: {
         // key could be any thing - value should be the exposed name from react components
         // then @ the url that the react components app is hosted on/the file name that we give it to the exposed file
         components: "components@http://localhost:3002/remoteEntry.js",
       },
+      // to let the consumers that react and react-dom is shared to prevent having multiple copies of react
+      // when the consumers start consuming exposed components of other react apps
+      shared: ["react", "react-dom"],
     }),
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({

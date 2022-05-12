@@ -2,8 +2,8 @@ import React from "react";
 import "./App.scss";
 import { Switch, Route } from "react-router-dom";
 import DetailsPage from "./components/DetailsPage/DetailsPage.jsx";
-import Homepage from "./components/Homepage/Homepage.jsx";
 import BookPage from "./components/BookPage/BookPage.jsx";
+const Homepage = React.lazy(() => import("homeapp/HomePage"));
 
 const App = () => {
   return (
@@ -15,7 +15,9 @@ const App = () => {
         <BookPage></BookPage>
       </Route>
       <Route path="/">
-        <Homepage></Homepage>
+        <React.Suspense fallback={null}>
+          <Homepage></Homepage>
+        </React.Suspense>
       </Route>
     </Switch>
   );

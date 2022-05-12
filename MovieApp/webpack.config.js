@@ -1,6 +1,7 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
+const { ModuleFederationPlugin } = require("webpack").container;
 
 module.exports = {
   mode: "development",
@@ -59,7 +60,7 @@ module.exports = {
       },
       {
         test: /\.webp$/i,
-        use: ["file-loader","webp-loader"],
+        use: ["file-loader", "webp-loader"],
       },
     ],
   },
@@ -68,6 +69,16 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       filename: "index.html",
+    }),
+    new ModuleFederationPlugin({
+      filename: "remoteEntry.js",
+      name: "movieapp",
+      remotes: {
+        // fetch the home exposes from the home app remote entry js
+        homeapp: "home@http://localhost:3000/remoteEntry.js",
+      },
+      // same approach in the consumer and the exposer
+      shared: ["react", "react-dom"],
     }),
   ],
   optimization: {
