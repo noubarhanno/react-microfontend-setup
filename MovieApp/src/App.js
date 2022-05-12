@@ -4,6 +4,8 @@ import { Switch, Route, useHistory, useLocation } from "react-router-dom";
 const BookPage = React.lazy(() => import("seatapp/SeatSelection"));
 const Homepage = React.lazy(() => import("homeapp/HomePage"));
 const DetailsPage = React.lazy(() => import("detailsapp/DetailsPage"));
+// always leave the react router been managed from the main app
+// as all the consumed apps that are exposed need to have the same reference of the react router history and location instance
 
 const App = () => {
   const history = useHistory();
@@ -26,7 +28,10 @@ const App = () => {
       </Route>
       <Route path="/">
         <React.Suspense fallback={null}>
-          <Homepage movieClicked={movieClicked}></Homepage>
+          <Homepage
+            movieClicked={movieClicked}
+            routing={{ history, location }}
+          ></Homepage>
         </React.Suspense>
       </Route>
     </Switch>

@@ -4,6 +4,7 @@ import "./HomeContent.scss";
 // importing from the home page web pack exposed name / the name of the component
 // from the react components app exposed components , get the name of a specific component you want to use
 const MovieCard = React.lazy(() => import("components/MovieCard"));
+import RoutingContext from "../../utils/RoutingProvider";
 
 const dummyItem = [{ name: "Dummy Movie" }];
 
@@ -39,10 +40,12 @@ const HomeContent = (props) => {
 
   return (
     <div className="home-content-container">
-      <QuickBooking></QuickBooking>
-      <div className="movies-container">
-        <Suspense fallback={null}>{renderMovieList()}</Suspense>
-      </div>
+      <RoutingContext.Provider value={props.routing}>
+        <QuickBooking></QuickBooking>
+        <div className="movies-container">
+          <Suspense fallback={null}>{renderMovieList()}</Suspense>
+        </div>
+      </RoutingContext.Provider>
     </div>
   );
 };
