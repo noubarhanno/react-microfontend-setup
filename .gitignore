@@ -4,3 +4,9 @@
 /SeatSelectionApp/node_modules
 /DetailsPageApp/node_modules
 /MovieApp/node_modules
+/SeatSelectionApp/dist
+/HomePageApp/dist
+/DetailsPageApp/dist
+/MovieApp/dist
+/ReactComponents/dist
+/MF_Server/dist
