@@ -14,6 +14,10 @@ const QuickBooking = () => {
       date,
       time,
     };
+    import("movieApp/movieData").then((module) => {
+      const movieData = module.default;
+      movieData.next(booking);
+    });
     context.history.push("book");
   };
 

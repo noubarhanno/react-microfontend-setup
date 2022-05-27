@@ -73,6 +73,9 @@ module.exports = {
     new ModuleFederationPlugin({
       filename: "remoteEntry.js",
       name: "movieapp",
+      exposes: {
+        "./movieData": "./src/movieObservable.js",
+      },
       remotes: {
         // fetch the home exposes from the home app remote entry js
         homeapp: "home@http://localhost:3000/remoteEntry.js",
