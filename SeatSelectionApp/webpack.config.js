@@ -31,6 +31,9 @@ module.exports = {
         "./SeatSelection":
           "./src/components/SeatSelectionContent/SeatSelectionContent.jsx",
       },
+      remotes: {
+        movieapp: "movieapp@http://localhost:9000/remoteEntry.js",
+      },
     }),
   ],
   module: {

@@ -1,5 +1,5 @@
-import { Subject } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 
-const movieData = new Subject();
+const movieData = new BehaviorSubject(null);
 
 export default movieData;

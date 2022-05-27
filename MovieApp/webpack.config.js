@@ -74,7 +74,7 @@ module.exports = {
       filename: "remoteEntry.js",
       name: "movieapp",
       exposes: {
-        "./movieData": "./src/movieObservable.js",
+        "./MovieData": "./src/movieObservable.js",
       },
       remotes: {
         // fetch the home exposes from the home app remote entry js

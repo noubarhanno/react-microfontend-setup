@@ -14,7 +14,7 @@ const QuickBooking = () => {
       date,
       time,
     };
-    import("movieApp/movieData").then((module) => {
+    import("movieapp/MovieData").then((module) => {
       const movieData = module.default;
       movieData.next(booking);
     });
