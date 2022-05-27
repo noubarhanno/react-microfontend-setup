@@ -10,7 +10,7 @@ const DetailsContent = (props) => {
     const resp = await fetch("http://localhost:5555/movies");
     const data = await resp.json();
 
-    let pathArr = props.location.pathname.split("/");
+    let pathArr = props.routing.location.pathname.split("/");
     let id = pathArr[pathArr.length - 1];
 
     const selectedMovie = data.filter((movie) => {
@@ -30,7 +30,12 @@ const DetailsContent = (props) => {
       movie: movie.id,
       date,
       time,
-    };   
+    };
+    import("movieapp/MovieData").then((module) => {
+      const movieData = module.default;
+      movieData.next(booking);
+      props.routing.history.push("/book");
+    });
   };
 
   return (
